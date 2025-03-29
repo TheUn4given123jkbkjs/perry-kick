@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perry đá Doof</title>
+    <style>
+        body {
+            background-color: lightblue;
+            overflow: hidden;
+        }
+
+        #perry {
+            position: absolute;
+            top: 50%;
+            left: -200px; /* Bắt đầu ngoài màn hình bên trái */
+            width: 200px;
+            transform: translateY(-50%); /* Không lật hình */
+        }
+
+        #doof {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            width: 150px;
+            transform: translateY(-50%);
+            transition: transform 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <img id="perry" src="perry.png" alt="Perry">
+    <img id="doof" src="doof.png" alt="Doofenshmirtz">
+
+    <script>
+        window.onload = function() {
+            let perry = document.getElementById("perry");
+            let doof = document.getElementById("doof");
+
+            // Perry chạy từ trái qua phải
+            perry.style.transition = "left 2s linear";
+            perry.style.left = "calc(100% - 350px)"; // Đến gần Doof
+
+            // Khi Perry tới gần Doof thì đá
+            setTimeout(() => {
+                doof.style.transform = "translateY(-50%) rotate(-30deg) translateX(50px)"; // Hiệu ứng bị đá bay qua phải
+            }, 2000);
+        };
+    </script>
+</body>
+</html>
